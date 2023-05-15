@@ -1,32 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
     android:orientation="vertical"
+
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/diceNumberTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        style="@style/diceAlignment"
+        android:textSize="@dimen/LargeTextSize"
         android:text=""
-        android:textSize="60sp" />
+        />
 
     <ImageView
+        style="@style/diceAlignment"
         android:id="@+id/diceImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/empty_dice" />
+        app:srcCompat="@drawable/empty_dice"
+        android:contentDescription="@string/dice_image"
+        />
 
     <Button
         android:id="@+id/rollTheDiceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/press_the_button"
-        android:layout_gravity="center_horizontal" />
+        style="@style/diceAlignment"
+        android:text="@string/rollTheDice"
+        android:textSize="@dimen/MediumTextSize"
+        />
 
 
 </LinearLayout>

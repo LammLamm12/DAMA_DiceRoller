@@ -1,46 +1,47 @@
 package pt.ipt.dama.diceroller
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import java.util.*
+import java.util.Random
 
 class MainActivity : AppCompatActivity() {
 
     // define a 'pointer' to the ImageView
     lateinit var auxDiceImage: ImageView
 
-
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         // find the button
-        val auxRollTheDiceButton: Button =findViewById(R.id.rollTheDiceButton)
-        // val auxRollTheDiceButton = findViewById<Button>(R.id.rollTheDiceButton)
+        val auxRollTheDiceButton: Button = findViewById(R.id.rollTheDiceButton)
+        // <=> val auxRollTheDiceButton = findViewById<Button>(R.id.rollTheDiceButton)
         auxRollTheDiceButton.setOnClickListener {
             rollTheDice()
         }
 
         // initialize the auxImageView variable
-        auxDiceImage = findViewById(R.id.ImageView)
-
+        auxDiceImage = findViewById(R.id.diceImageView)
     }
 
     /**
      * 'roll' the dice
+     *  ie, add a random value to the textview
      */
-
-    private fun rollTheDice(){
+    private fun rollTheDice() {
         // get the random value
-        val randomValue = Random().nextInt(6)+1 // it will get values from 1 to 6
+        val randomValue = Random().nextInt(6) + 1 // it will get values from 1 to 6
         // assign the random value to the TextView
-        val auxDiceNumberTextView: TextView =findViewById(R.id.diceNumberTextView)
+        val auxDiceNumberTextView: TextView = findViewById(R.id.diceNumberTextView)
         auxDiceNumberTextView.text = randomValue.toString()
 
-        val drawableImage =when(randomValue){
+        // define the image to be used
+        val drawableImage = when (randomValue) {
             1 -> R.drawable.dice_1
             2 -> R.drawable.dice_2
             3 -> R.drawable.dice_3
@@ -48,10 +49,9 @@ class MainActivity : AppCompatActivity() {
             5 -> R.drawable.dice_5
             6 -> R.drawable.dice_6
             else -> R.drawable.empty_dice
-
-            // assign the image to the ImageView
-            auxDiceImage.setImageResource(drawableImage)
         }
+        // assign the image to the ImageView
+        auxDiceImage.setImageResource(drawableImage)
     }
 
 }
